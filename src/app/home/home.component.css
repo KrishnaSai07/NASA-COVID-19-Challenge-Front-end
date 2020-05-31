@@ -1,0 +1,29 @@
+.bg{
+    background: url('../../assets/img/covid_tracker.png'); 
+    height: calc(55vh); 
+    width: 700px;
+    animation: slide 20s infinite;
+    background-size: cover;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    margin:  0px auto;
+    color: white;
+    
+
+}
+
+@keyframes slide {
+    25%{
+         background: url(../../assets/img/public_trans.png)
+    }
+    50%{
+        background: url(../../assets/img/migrant_workers.png)
+   }
+   75%{
+    background: url(../../assets/img/bengal_cycle.png)
+    }
+100%{
+    background: url(../../assets/img/croatia_quake.png)
+}
+
+}

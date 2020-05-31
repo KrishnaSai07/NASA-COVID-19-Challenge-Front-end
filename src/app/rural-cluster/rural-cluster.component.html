@@ -1,0 +1,71 @@
+<div class="jumbotron" style="background-color: rgb(11, 7, 31);  height: calc(95vh);overflow-y: hidden;">
+  <div class="split left">
+    <div class="container">
+      <div class="row">
+        <div style="padding-left: 0px;padding-top: 20px;" class="col-6">
+          <img src='../../assets/img/migrant_workers.png' width="310" height="270">
+        </div>
+        <div class="col-6">
+          <h6 style="color:black;padding-top: 37.5px;">Clustering due to Migration</h6>
+          <p style="padding-left: 0px;color:black;font-size: 10.15px;">
+            The lockdown in India due to COVID-19, has resulted in shutting down of many industries, which turned of a lot of migrant labourers jobless. With no job in sight, the workers wanted to return
+            to their native state. The migrant workers were allowed to move to their native state from 1st May 2020. 
+            And this movement of people from urban areas explains the reason as to why the rural areas are now turning into hotspots with large number of COVID-19 positive cases.
+            We looked into four states of India: Rajasthan,Bihar, Odisha and Jharkhand which are considered to be most affected.
+            So we collected the data which contained the daily COVID-19 positive cases reported from 1st May to 27th May in these states.
+            <br/>
+            From the graphs it is very evident that the migration of workers has resulted in doubling of the cases, especilly in Rajasthan.
+            Especially from 10th of May, almost all of the states had started to witness a huge spike in the number of COVID-19 cases.  
+          </p>
+        </div>
+      </div>
+      <div class="row" style="height:10px;width:600px;">
+        <select (change)="optionChanged($event.target.value)">
+          <option *ngFor="let state of states" [value]="state">{{state}}
+          </option>
+          </select>
+          <div>
+        <canvas style="height: 300px;width: 600px;" id='commonCanvas'>{{total_chart}}</canvas>
+      </div>
+      </div>
+      </div>
+  </div>
+      <div class="split right">
+        <div class="container">
+          <div class="row">
+            <div style="padding-left: 0px;padding-top: 0px;" class="col-12">
+              <h5 style="color:white;padding-top: 35px;">Clustering due to lack of awareness/low literacy</h5>
+              <p style="padding-left: 5px;color:white;font-size: 11px;">
+              Another reason to the huge cluster of COVID-19 cases is the lack of the awareness about the contagious nature of the virus and not able to understand the danger that is involved 
+              by not following the norms set by the government ,for instance practising social distancing, covering the face with masks. Indeed the influx of people from urban starts the spread but its the lack of awareness which assists in the further spread of COVID-19 . To understand this
+              we tried to find if there is a link between literacy rate in rural areas and the COVID-19 spread and further more look if the population density too has a role to play. For this we are utilising the dataset which we created comprising of all major districts affected by COVID-19 in India.
+              By changing the rural percentage, we compare the denisites and literacy rate to COVID-19 cases in the places that fall under the range we set.             
+              </p>
+            </div>
+            </div>
+            <div class="row" style="height:10px;width:800px;">
+              <div class="col-5">
+              <label for="myRange" style="padding-left: 5px;color:white;font-size: 15px;">Areas with Rural percentage {{term}} {{ruralPercent}}%</label>
+              </div>
+              <div class="col-3">
+              <div class="slidecontainer" style="width:200px;padding-top: 2px; padding-right: 25px;">
+                <!-- <p style="padding-left: 5px;color:white;font-size: 15px;">Rural area percentage:</p> -->
+               
+                <input type="range" min="60" max="100" [value]="ruralPercent" class="slider" id="myRange" (change) = "setRural($event.target.value)">
+              </div>
+              </div>
+              <div class="col-4" style="height:10px;width:300px;">
+                <select (change)="optionChangedFor($event.target.value)">
+                  <option *ngFor="let state of category" [value]="state">{{state}}
+                  </option>
+                  </select>
+              </div>
+          </div>
+          <div class="row" style="height:10px;width:620px;padding-top: 20px;">
+              <canvas style="height:300px;width: 620px;" id='commonLit'>{{other_total_chart}}</canvas>
+              </div>
+            </div>
+            </div>
+      </div>
+
+

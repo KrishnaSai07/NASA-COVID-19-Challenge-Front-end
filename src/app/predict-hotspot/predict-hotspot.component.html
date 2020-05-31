@@ -1,0 +1,85 @@
+<div class="jumbotron" style="background-color: rgb(11, 7, 31);  height: calc(95vh);">
+  <div class="split left">
+    <div class="row" style="color: black;padding-top: 35px;padding-left: 18px;">
+      <h2>Welcome to the Hotspot predictor</h2>
+      <h5>(This predictor will predict if any city/state is potential hotspot in India)</h5>
+       <div class="col-6">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="state" (click)="selectOptionState($event.target.value)" checked>
+          <label class="form-check-label" for="exampleRadios1">
+            State-Wise
+          </label>
+        </div>
+       </div>
+       <div class="col-6">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="city" (click)="selectOptionState($event.target.value)" >
+          <label class="form-check-label" for="exampleRadios1">
+            City-wise
+          </label>
+        </div>
+       </div>
+    </div>
+    <div class="row" style="color: black;padding-top: 15px;padding-left: 40px; width:670px;">
+     <div class="col-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Population Density</label>
+          <input type="input" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter population density" [(ngModel)]="populationDensity">
+          <small id="emailHelp" class="form-text text-muted">Enter the population density</small>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">State/City Name</label>
+          <input type="input" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter State/City name" [(ngModel)]="place">
+          <small id="emailHelp" class="form-text text-muted">Enter the State/City name</small>
+        </div>
+      </div>
+
+    </div>
+    <div class="row" style="color: black;padding-top: 15px;padding-left: 50px;">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Urbanisation Percentage</label>
+          <input type="input" class="form-control" id="exampleInputPassword1" placeholder="Urbanisation Percentage" [(ngModel)]="urbanisation">
+          <small id="emailHelp" class="form-text text-muted">This value has to be in terms of percentages i.e 0-100</small>
+        </div>
+    </div>
+    <div class="row" style="color: black;padding-top: 10px;padding-left: 50px;">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Literacy Percentage</label>
+          <input type="input" class="form-control" id="exampleInputPassword1" placeholder="Literacy Percentage" [(ngModel)]="literacy">
+          <small id="emailHelp" class="form-text text-muted">This value has to be in terms of percentages i.e 0-100</small>
+        </div>
+    </div>
+    <div *ngIf="category === 'city' " class="row" style="color: black;padding-top: 10px;padding-left: 50px;">
+      <div class="form-group">
+        <label for="exampleInputPassword1">State</label>
+        <select class="form-control" (change)="optionChanged($event.target.value)" [(ngModel)]="state">
+          <option *ngFor="let stat of statesInfo" >{{stat}}
+          </option>
+          </select>
+        <small id="emailHelp" class="form-text text-muted">Enter the state your city is in</small>
+      </div>
+  </div>
+        <div class="row" style="color: black;padding-top: 10px;padding-left: 40px;">
+          <div class='col-6'>
+        <button type="submit" class="btn btn-primary" style="width:100px;height:50px;" (click)="formData($event)">Submit</button>
+      </div>
+      <div class='col-6'>
+        <button  class="btn btn-primary" style="width:100px;height:50px;" (click)="formDataReset()">Reset</button>
+      </div>
+      <p style="color: red;">{{message}}</p>
+    </div>
+    </div>
+    <div class="split right">
+      <div class="chart-container" style="position: relative; height:40vh; width:70vw;padding-top: 50px;padding-right: 100px;">    
+
+        <canvas id="canvas"></canvas>    
+        <div *ngIf="showChart">
+          <p style="color: white;padding-left: 40px;padding-top: 40px;">
+            {{place}} {{resultant}}
+          </p>
+        </div>
+      </div>
+    </div>
+</div>    
