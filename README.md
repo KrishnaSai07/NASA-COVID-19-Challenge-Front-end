@@ -1,3 +1,6 @@
+## How to run the above project
+ The person who wants to explore the project just need to run first `npm install ` to fetch all the node_modules and then run `ng serve` to run this.
+
 # Covid19FrontEnd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
